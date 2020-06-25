@@ -12,7 +12,7 @@ use Twig\TwigFilter;
  *
  * @version 1.0.0
  */
-class HideFilter
+class VelesHideFilter
 {
     /**
      * Return array of filers.
