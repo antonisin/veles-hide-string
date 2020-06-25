@@ -1,0 +1,30 @@
+{
+    "name": "maximantonisin/veles-hide-string",
+    "description": "String security/anonymous hide",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maxim Antonisin",
+            "email": "maxim.antonisin@gmail.com"
+        }
+    ],
+    "keywords" : [
+        "hide",
+        "hide char",
+        "asterisk hide",
+        "asterisk replace",
+        "replace char",
+        "asterisk char",
+        "security asterisk",
+        "security string replace"
+    ],
+    "require": {
+        "php": "^7.2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "MaximAntonisin\\Veles\\": "src/"
+        }
+    }
+}
