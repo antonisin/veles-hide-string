@@ -21,9 +21,9 @@ class VelesHideFilter
     public static function getFilters(): array
     {
         return [
-            new TwigFilter('hide', [HideFunction::class,'hide']),
-            new TwigFilter('stringHide', [HideFunction::class, 'hide']),
-            new TwigFilter('velesHide', [HideFunction::class, 'hide']),
+            new TwigFilter('hide', [VelesHideFunction::class,'hide']),
+            new TwigFilter('stringHide', [VelesHideFunction::class, 'hide']),
+            new TwigFilter('velesHide', [VelesHideFunction::class, 'hide']),
         ];
     }
 
