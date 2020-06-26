@@ -4,6 +4,7 @@ namespace MaximAntonisin\Veles;
 
 use MaximAntonisin\Veles\Type\StringType;
 use MaximAntonisin\Veles\Type\EmailType;
+use MaximAntonisin\Veles\Type\UrlType;
 
 /**
  * Veles Hide String.
@@ -13,7 +14,7 @@ use MaximAntonisin\Veles\Type\EmailType;
  *
  * @author Maxim Antonisin <maxim.antonisin@gmail.com>
  *
- * @version 1.0.0
+ * @version 1.1.0
  */
 abstract class VelesHide
 {
@@ -24,6 +25,7 @@ abstract class VelesHide
     const ALLOWED_TYPES = [
         'string' => StringType::class,
         'email'  => EmailType::class,
+        'url'    => UrlType::class,
     ];
 
 
@@ -60,6 +62,8 @@ abstract class VelesHide
         switch (self::ALLOWED_TYPES[$type]) {
             case EmailType::class:
                 return self::hideEmail($value, $options);
+            case UrlType::class:
+                return self::hideUrl($value, $options);
             case StringType::class:
             default:
                 return self::hideString($value, $options);
@@ -123,6 +127,47 @@ abstract class VelesHide
 
 
         return implode('@', $parts);
+    }
+
+    /**
+     * Hide chars in url string.
+     * This method is designed to hide personal and sensitive infromation from url string. Chars will be replaced with
+     * special symbol. Method will return an processed string.
+     *
+     * @param string $value   - Url value string to be processed to hide sensitive data with special char.
+     * @param array  $options - Additional options used on processing. All options depends on string type format and
+     *                          type class.
+     * @return string
+     *
+     * @throws \Exception
+     */
+    private static function hideUrl(string $value, array $options): string
+    {
+        /** Allowed only valid email values. */
+        if (!filter_var($value, FILTER_VALIDATE_URL)) {
+            throw new \Exception('Invalid Url value.');
+        }
+
+        $parts  = parse_url($value);
+        $char   = $options[UrlType::HIDE_CHAR_OPTION] ?? UrlType::$hideChar;
+        $result = self::hideString($parts['host'], $options);
+
+        $patterns = [
+            'scheme' => '%2$s://%1$s',
+            'path'   => '%s%s',
+            'query'  => '%s?%s',
+        ];
+
+        foreach ($patterns as $key => $pattern) {
+            $length = $options[$key.'Length'] ?? UrlType::${$key.'Length'};
+            if ($length >= 0 and !empty($parts[$key])) {
+                $offset = $options[$key.'Offset'] ?? UrlType::${$key.'Offset'};
+                $temp   = self::replaceString($parts[$key], $length, $char, $offset);
+                $result = sprintf($pattern, $result, $temp);
+            }
+        }
+
+        return $result;
     }
 
     /**
