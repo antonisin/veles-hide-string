@@ -41,8 +41,8 @@ var_dump($result);
 
 ### Email (MaximAntonisin\Veles\Type\EmailType::class)
 #### Options
-- `domainLength` - Number of chars to be replaced.
-- `domainOffset` - Number of chars to be skipped to replace.
+- `domainLength` - Number of chars to be replaced in domain part.
+- `domainOffset` - Number of chars to be skipped to replace in domain part.
 
 #### Basic usage
 ```php
@@ -86,6 +86,74 @@ $result = VelesHide::hide('exampleDomainName@example.com', [
 var_dump($result);
 
 //string(29) "exampleDomainName@ex****e.com"
+```
+### Url (MaximAntonisin\Veles\Type\UrlType::class)
+#### Options
+- `schemeLength` - Number of chars to be replaced in scheme part.
+- `schemeOffset` - Number of chars to be skipped on replace in scheme part.
+- `queryLength` - Number of chars to be replaced in query part.
+- `queryOffset` - Number of chars to be skipped on replace in query part.
+- `pathLength` - Number of chars to be replaced in path part.
+- `pathOffset` - Number of chars to be skipped on replace in path part.
+
+#### Basic Usage
+```php
+use MaximAntonisin\Veles\VelesHide;
+use MaximAntonisin\Veles\Type\UrlType;
+
+$result = VelesHide::hide('https://foo.example.com/path/to/something?queryParam=queryValue', [
+    UrlType::LENGTH_OPTION  => 4,
+    UrlType::OFFSET_OPTION  => 2,
+], 'url');
+var_dump($result);
+
+//string(23) "https://fo****ample.com"
+```
+
+#### Replace in scheme
+```php
+use MaximAntonisin\Veles\VelesHide;
+use MaximAntonisin\Veles\Type\UrlType;
+
+$result = VelesHide::hide('https://foo.example.com/path/to/something?queryParam=queryValue', [
+    UrlType::LENGTH_OPTION         => 0,
+    UrlType::SCHEME_LENGTH_OPTION  => 2,
+    UrlType::SCHEME_OFFSET_OPTION  => 2,
+], 'url');
+var_dump($result);
+
+//string(23) "ht**s://foo.example.com"
+```
+
+#### Replace in path
+```php
+use MaximAntonisin\Veles\VelesHide;
+use MaximAntonisin\Veles\Type\UrlType;
+
+$result = VelesHide::hide('https://foo.example.com/path/to/something?queryParam=queryValue', [
+    UrlType::LENGTH_OPTION       => 0,
+    UrlType::PATH_LENGTH_OPTION  => 6,
+    UrlType::PATH_OFFSET_OPTION  => 2,
+], 'url');
+var_dump($result);
+
+//string(41) "https://foo.example.com/p******/something"
+```
+
+#### Replace in query
+```php
+use MaximAntonisin\Veles\VelesHide;
+use MaximAntonisin\Veles\Type\UrlType;
+
+$result = VelesHide::hide('https://foo.example.com/path/to/something?queryParam=queryValue', [
+    UrlType::LENGTH_OPTION        => 0,
+    UrlType::PATH_LENGTH_OPTION   => 0,
+    UrlType::QUERY_LENGTH_OPTION  => 4,
+    UrlType::QUERY_OFFSET_OPTION  => 2,
+], 'url');
+var_dump($result);
+
+//string(63) "https://foo.example.com/path/to/something?qu****aram=queryValue"
 ```
 
 @TODO Add all requirements.
