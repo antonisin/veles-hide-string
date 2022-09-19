@@ -9,12 +9,12 @@ use MaximAntonisin\Veles\Type\UrlType;
 /**
  * Veles Hide String.
  * This class is designed to work with different types of string formats (plain string, email, phone number etc.) and to
- * replace chars with special symbol (by default `*`) for security hide of personal information (usually). Class is
+ * replace chars with special symbol (by default `*`) for security hide from personal information (usually). Class is
  * implemented as abstract class with static methods.
  *
  * @author Maxim Antonisin <maxim.antonisin@gmail.com>
  *
- * @version 1.1.0
+ * @version 1.2.0
  */
 abstract class VelesHide
 {
@@ -31,15 +31,15 @@ abstract class VelesHide
 
     /**
      * Base hide method to hide sensitive data.
-     * This method is designed to receive as argument an string (in different format) and to hide personal sensitive
-     * data with special symbol. Data processing depend on second method argument $type. By default type is
+     * This method is designed to receive as argument a string (in different format) and to hide personal sensitive
+     * data with special symbol. Data processing depend on second method argument $type. By default, type is
      * StringType::class. As last 3rd, this method may receive an array of additional options. All possible and valid
      * options are described in type class or base type class (ex emailEmailType::class, StringType::class, BaseType::class)
      * and depends on string type format. All class type properties may be received in options array. Method will return
-     * an processed string.
+     * a processed string.
      *
      * @param string $value   - Value to be processed to hide sensitive data with special char.
-     * @param array  $options - Additional options used on processing. All options depends on string type format and
+     * @param array  $options - Additional options used on processing. All options depend on string type format and
      *                          type class.
      * @param string $type    - String format type (Allowed types stored in VelesHide::ALLOWED_TYPES constant array).
      *
@@ -73,10 +73,10 @@ abstract class VelesHide
     /**
      * Hide chars in string.
      * This method is designed to hide personal and sensitive information from simple string. Chars will be replaced
-     * with special symbol. Method will return an processed string.
+     * with special symbol. Method will return a processed string.
      *
      * @param string $value   - Value to be processed to hide sensitive data with special char.
-     * @param array  $options - Additional options used on processing. All options depends on string type format and
+     * @param array  $options - Additional options used on processing. All options depend on string type format and
      *                          type class.
      *
      * @return string
@@ -93,10 +93,10 @@ abstract class VelesHide
     /**
      * Hide chars in email string.
      * This method is designed to hide personal and sensitive information from email string. Chars will be replaced with
-     * special symbol. Method will return an processed string.
+     * special symbol. Method will return a processed string.
      *
      * @param string $value   - Email value string to be processed to hide sensitive data with special char.
-     * @param array  $options - Additional options used on processing. All options depends on string type format and
+     * @param array  $options - Additional options used on processing. All options depend on string type format and
      *                          type class.
      * @return string
      *
@@ -131,11 +131,11 @@ abstract class VelesHide
 
     /**
      * Hide chars in url string.
-     * This method is designed to hide personal and sensitive infromation from url string. Chars will be replaced with
-     * special symbol. Method will return an processed string.
+     * This method is designed to hide personal and sensitive information from url string. Chars will be replaced with
+     * special symbol. Method will return a processed string.
      *
      * @param string $value   - Url value string to be processed to hide sensitive data with special char.
-     * @param array  $options - Additional options used on processing. All options depends on string type format and
+     * @param array  $options - Additional options used on processing. All options depend on string type format and
      *                          type class.
      * @return string
      *
@@ -174,7 +174,7 @@ abstract class VelesHide
      * Replace chars in string.
      * This method is designed to replace chars in string with special char. Number of chars to be changed, depends on
      * second argument $length and $value string length. First replaced char may be offset with last argument $offset.
-     * Method will return an processed string.
+     * Method will return a processed string.
      *
      * @param string $value  - String value to be processed and replaced chars.
      * @param int    $length - Number of chars to be replaced by special $char.
@@ -193,7 +193,7 @@ abstract class VelesHide
             $length = strlen($value) - $offset;
         }
 
-        $pattern = sprintf('/^(.{%s}).{1,%s}/', $offset, $length);
+        $pattern = sprintf('/^(.{%s}).{1,%s}/', $offset, $length ?: 1);
         $replace = sprintf('$1%s', str_repeat($char, $length));
 
         return preg_replace($pattern, $replace, $value) ?? $value;
