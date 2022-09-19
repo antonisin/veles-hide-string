@@ -6,13 +6,10 @@ Maxim Antonisin <br>
 [Linkedin](https://www.linkedin.com/in/mantonishin/)
 
 ## Description
-@TODO Add description.
+This package is designed and implemented to work with text/strings to replace/hide sensitive information.
 
 ## Requirements
 - PHP 7.2+
-
-## Installation 
-@TODO Add installation description.
 
 ## Options
 - `length` - Number of chars to be replaced.
@@ -155,7 +152,3 @@ var_dump($result);
 
 //string(63) "https://foo.example.com/path/to/something?qu****aram=queryValue"
 ```
-
-@TODO Add all requirements.
-
-@TODO Add more information 

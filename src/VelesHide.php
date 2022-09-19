@@ -196,6 +196,6 @@ abstract class VelesHide
         $pattern = sprintf('/^(.{%s}).{1,%s}/', $offset, $length);
         $replace = sprintf('$1%s', str_repeat($char, $length));
 
-        return preg_replace($pattern, $replace, $value);
+        return preg_replace($pattern, $replace, $value) ?? $value;
     }
 }
