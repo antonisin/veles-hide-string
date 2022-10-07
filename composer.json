@@ -20,7 +20,7 @@
         "security string replace"
     ],
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.2|^8.0",
         "symfony/twig-bridge": "^3.4"
     },
     "require-dev": {
