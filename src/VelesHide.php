@@ -151,7 +151,7 @@ abstract class VelesHide
         $parts  = parse_url($value);
         $char   = $options[UrlTypeInterface::OPTION_HIDE_CHAR] ?? UrlTypeInterface::DEFAULT_HIDE_CHAR;
         $result = self::hideString($parts['host'], $options);
-        if ($parts['port']) {
+        if (array_key_exists('port', $parts)) {
             $result = sprintf('%s:%s', $result, $parts['port']);
         }
 
