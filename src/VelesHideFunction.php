@@ -10,7 +10,7 @@ use Twig\TwigFunction;
  *
  * @author Maxim Antonisin <maxim.antonisin@gmail.com>
  *
- * @version 1.0.0
+ * @version 1.1.0
  */
 class VelesHideFunction
 {
@@ -21,9 +21,9 @@ class VelesHideFunction
     public static function getFunctions(): array
     {
         return [
-            new TwigFunction('hide', [VelesHideFilter::class,'hide']),
-            new TwigFunction('stringHide', [VelesHideFilter::class, 'hide']),
-            new TwigFunction('velesHide', [VelesHideFilter::class, 'hide']),
+            new TwigFunction('hide', [VelesHideFunction::class,'hide']),
+            new TwigFunction('stringHide', [VelesHideFunction::class, 'hide']),
+            new TwigFunction('velesHide', [VelesHideFunction::class, 'hide']),
         ];
     }
 
