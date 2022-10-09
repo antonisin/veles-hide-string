@@ -1,6 +1,7 @@
 # Veles Hide (String security hide)
-![](https://img.shields.io/packagist/l/maximantonisin/veles-hide-string?style=for-the-badge)
-![](https://img.shields.io/packagist/v/maximantonisin/veles-hide-string?style=for-the-badge)
+[![img](https://img.shields.io/packagist/l/maximantonisin/veles-hide-string?style=for-the-badge)](https://github.com/antonisin/veles-hide-string/blob/master/License)
+[![img](https://img.shields.io/packagist/v/maximantonisin/veles-hide-string?style=for-the-badge)](https://packagist.org/packages/maximantonisin/veles-hide-string)
+[![img](https://img.shields.io/github/workflow/status/antonisin/veles-hide-string/PHPUnit?style=for-the-badge)](https://github.com/antonisin/veles-hide-string/actions)
 ## Author 
 Maxim Antonisin <br>
 [maxim.antonisin@gmail.com](mailto:maxim.antonisin@gmail.com) <br>
@@ -10,11 +11,13 @@ Maxim Antonisin <br>
 This package is designed and implemented to work with text/strings to replace/hide sensitive information.
 
 ## Requirements
-![](https://img.shields.io/packagist/dependency-v/maximantonisin/veles-hide-string/symfony/twig-bridge?style=for-the-badge)
-![](https://img.shields.io/packagist/dependency-v/maximantonisin/veles-hide-string/php?style=for-the-badge)
-![](https://img.shields.io/badge/composer-required-orange?style=for-the-badge)
+[![img](https://img.shields.io/packagist/dependency-v/maximantonisin/veles-hide-string/symfony/twig-bridge?style=for-the-badge)](https://github.com/symfony/twig-bridge/releases/tag/v3.3.4)
+[![img](https://img.shields.io/packagist/dependency-v/maximantonisin/veles-hide-string/php?style=for-the-badge)](https://www.php.net/releases/7_2_0.php)
+[![img](https://img.shields.io/badge/composer-required-orange?style=for-the-badge)](https://getcomposer.org/download/)
 
 - PHP 7.2+
+- composer
+- symfony/twig-bridge
 
 ## Options
 - `length` - Number of chars to be replaced.
@@ -167,5 +170,5 @@ var_dump($result);
 ```
 
 ## Support
-<a href="https://www.buymeacoffee.com/sleepwalker"> <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="sleepwalker" style="margin-right: 12px;" /></a>
-<a href="https://ko-fi.com/maximuscode"> <img src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="210" alt="maximuscode" /></a>
+<a href="https://www.buymeacoffee.com/maximusCode"> <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="sleepwalker" style="margin-right: 12px;" /></a>
+<a href='https://ko-fi.com/maximusCode' target='_blank'><img  height="50" width="210" src='https://cdn.ko-fi.com/cdn/kofi4.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
